@@ -18,7 +18,7 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-	@GetMapping("/hello")
+	@GetMapping("/book")
 	public String hello() {
 		return repository.save(new Book("War and Peace")).toString();
 	}
