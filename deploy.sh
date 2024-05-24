@@ -3,7 +3,7 @@
 start=$(date +"%s")
 
 ssh -p "${SERVER_PORT}" "${SERVER_USER}"@"${SERVER_HOST}" -i key.txt -t -t -o StrictHostKeyChecking=no << 'ENDSSH'
-docker pull test-backend
+docker pull learningkyljmeeski/test-backend:0.0.1
 
 CONTAINER_NAME=test-backend
 if [ "$(docker ps -qa -f name=$CONTAINER_NAME)" ]; then
