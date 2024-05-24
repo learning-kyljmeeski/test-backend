@@ -1,4 +1,4 @@
-FROM learningkyljmeeski/17-jdk-apline as build
+FROM learningkyljmeeski/17-jdk-alpine as build
 WORKDIR /usr/opt/app
 COPY .mvn .mvn
 COPY pom.xml .
