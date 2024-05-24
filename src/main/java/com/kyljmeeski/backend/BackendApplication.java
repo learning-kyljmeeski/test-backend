@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class BackendApplication {
+	private final BookRepository repository;
+
+	public BackendApplication(BookRepository repository) {
+		this.repository = repository;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
@@ -15,7 +20,6 @@ public class BackendApplication {
 
 	@GetMapping("/hello")
 	public String hello() {
-		return "HELLO from GC";
+		return repository.save(new Book("War and Peace")).toString();
 	}
-
 }
