@@ -3,14 +3,17 @@
 start=$(date +"%s")
 
 ssh -p "${SERVER_PORT}" "${SERVER_USER}"@"${SERVER_HOST}" -i key.txt -t -t -o StrictHostKeyChecking=no << 'ENDSSH'
-
 docker pull learningkyljmeeski/test-backend:0.0.1
 
-cd /home/learning.kyljmeeski/solutions/test_backend
+CONTAINER_NAME=test-backend
+if [ "$(docker ps -qa -f name=$CONTAINER_NAME)" ]; then
+    if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+        echo "Container is running -> stopping it..."
+        docker stop $CONTAINER_NAME;
+    fi
+fi
 
-docker-compose down
-
-docker-compose up -d
+docker run -d --rm -p 8080:8080 --name $CONTAINER_NAME learningkyljmeeski/test-backend:0.0.1
 
 exit
 ENDSSH
