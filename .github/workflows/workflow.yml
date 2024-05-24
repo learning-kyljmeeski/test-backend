@@ -70,7 +70,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: Dockerfile-app
+          file: Dockerfile
           push: true
           tags: learningkyljmeeski/test-backend:0.0.1
 
