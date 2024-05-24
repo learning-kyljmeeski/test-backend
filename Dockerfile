@@ -7,5 +7,5 @@ RUN mvn clean install -Dmaven.skip-tests=true
 
 FROM learningkyljmeeski/17-jre-alpine
 WORKDIR /workspace/app
-COPY --from=build /usr/opt/app/targe/*.jar app.jar
+COPY --from=build /usr/opt/app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
